@@ -5,7 +5,12 @@
         public string nomeEntidade;
         public string sufixo;
 
-        protected RepositorioBase<T> repositorioBase = null;
+        protected RepositorioBase<T> repositorioBase;
+
+        public TelaBase(RepositorioBase<T> repositorio)
+        {
+            this.repositorioBase = repositorio;
+        }
 
         public virtual string ApresentarMenu()
         {
@@ -14,9 +19,9 @@
             Console.WriteLine($"Cadastro de {nomeEntidade}{sufixo} \n");
 
             Console.WriteLine($"[1] Inserir {nomeEntidade}");
-            Console.WriteLine($"[2] para Visualizar {nomeEntidade}{sufixo}");
-            Console.WriteLine($"[3] para Editar {nomeEntidade}{sufixo}");
-            Console.WriteLine($"[4] para Excluir {nomeEntidade}{sufixo}");
+            Console.WriteLine($"[2] para Editar {nomeEntidade}{sufixo}");
+            Console.WriteLine($"[3] para Excluir {nomeEntidade}{sufixo}");
+            Console.WriteLine($"[4] para Visualizar {nomeEntidade}{sufixo}");
 
             Console.WriteLine("[S] Voltar ao menu principal");
 

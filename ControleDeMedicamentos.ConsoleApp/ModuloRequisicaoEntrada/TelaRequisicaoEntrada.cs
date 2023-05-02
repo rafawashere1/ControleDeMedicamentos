@@ -13,9 +13,9 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloRequisicaoEntrada
         private readonly TelaMedicamento _telaMedicamento;
 
         public TelaRequisicaoEntrada(RepositorioRequisicaoEntrada repositorioRequisicaoEntrada, RepositorioFuncionario repositorioFuncionario, RepositorioMedicamento repositorioMedicamento,
-            TelaFuncionario telaFuncionario, TelaMedicamento telaMedicamento)
+            TelaFuncionario telaFuncionario, TelaMedicamento telaMedicamento) : base(repositorioRequisicaoEntrada)
         {
-            this.repositorioBase = repositorioRequisicaoEntrada;
+
             _repositorioFuncionario = repositorioFuncionario;
             _repositorioMedicamento = repositorioMedicamento;
             _telaFuncionario = telaFuncionario;

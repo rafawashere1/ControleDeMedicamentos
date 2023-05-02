@@ -19,8 +19,8 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloRequisicaoSaida
 
         public TelaRequisicaoSaida(RepositorioRequisicaoSaida repositorioRequisicaoSaida, RepositorioPaciente repositorioPaciente, TelaPaciente telaPaciente,
             RepositorioFuncionario repositorioFuncionario, TelaFuncionario telaFuncionario, RepositorioMedicamento repositorioMedicamento, TelaMedicamento telaMedicamento)
+        : base(repositorioRequisicaoSaida)
         {
-            this.repositorioBase = repositorioRequisicaoSaida;
             _repositorioPaciente = repositorioPaciente;
             _telaPaciente = telaPaciente;
             _repositorioFuncionario = repositorioFuncionario;

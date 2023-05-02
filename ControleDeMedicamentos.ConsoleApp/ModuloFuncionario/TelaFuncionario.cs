@@ -7,9 +7,9 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloFuncionario
     {
         private readonly TelaEndereco _telaEndereco;
 
-        public TelaFuncionario(RepositorioFuncionario repositorioFuncionario, TelaEndereco telaEndereco)
+        public TelaFuncionario(RepositorioFuncionario repositorioFuncionario, TelaEndereco telaEndereco) : base(repositorioFuncionario)
         {
-            this.repositorioBase = repositorioFuncionario;
+
             _telaEndereco = telaEndereco;
             nomeEntidade = "Funcionário";
             sufixo = "s";

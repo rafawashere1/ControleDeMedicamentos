@@ -24,7 +24,7 @@ namespace ControleDeMedicamentos.ConsoleApp
             CadastrarRegistros(repositorioFuncionario, repositorioFornecedor, 
                 repositorioMedicamento, repositorioPaciente, repositorioEndereco, repositorioRequisicaoEntrada, repositorioRequisicaoSaida);
 
-            TelaEndereco telaEndereco = new();
+            TelaEndereco telaEndereco = new(repositorioEndereco);
             TelaPaciente telaPaciente = new(repositorioPaciente, telaEndereco);
             TelaFuncionario telaFuncionario = new(repositorioFuncionario, telaEndereco);
             TelaFornecedor telaFornecedor = new(repositorioFornecedor, telaEndereco);
@@ -137,6 +137,12 @@ namespace ControleDeMedicamentos.ConsoleApp
 
                             Utils.VoltarAoMenu();
                         }
+
+                        else if(opcaoMedicamento == "5")
+                            telaMedicamento.VisualizarMedicamentosMaisRetirados();
+
+                        else if (opcaoMedicamento == "6")
+                            telaMedicamento.VisualizarMedicamentosEmFalta();
 
                         else if (opcaoMedicamento == "S")
                             continue;

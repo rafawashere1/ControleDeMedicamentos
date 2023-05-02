@@ -7,9 +7,8 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloPaciente
     {
         private readonly TelaEndereco _telaEndereco;
 
-        public TelaPaciente(RepositorioPaciente repositorioPaciente, TelaEndereco telaEndereco)
+        public TelaPaciente(RepositorioPaciente repositorioPaciente, TelaEndereco telaEndereco) : base(repositorioPaciente)
         {
-            this.repositorioBase = repositorioPaciente;
             _telaEndereco = telaEndereco;
             nomeEntidade = "Paciente";
             sufixo = "s";

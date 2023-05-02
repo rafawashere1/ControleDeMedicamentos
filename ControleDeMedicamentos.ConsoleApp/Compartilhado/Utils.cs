@@ -31,12 +31,6 @@
 
                     break;
             }
-
-            Console.WriteLine();
-            Console.ForegroundColor = cor;
-            Console.WriteLine(mensagem);
-            Console.ResetColor();
-            Console.ReadKey();
         }
     }
 }

@@ -8,9 +8,9 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloMedicamento
         private readonly RepositorioMedicamento _repositorioMedicamento;
         private readonly TelaFornecedor _telaFornecedor;
 
-        public TelaMedicamento(RepositorioMedicamento repositorioMedicamento, TelaFornecedor telaFornecedor, RepositorioFornecedor repositorioFornecedor)
+        public TelaMedicamento(RepositorioMedicamento repositorioMedicamento, TelaFornecedor telaFornecedor, RepositorioFornecedor repositorioFornecedor) : base(repositorioMedicamento)
         {
-            this.repositorioBase = repositorioMedicamento;
+
             _repositorioMedicamento = repositorioMedicamento;
             _telaFornecedor = telaFornecedor;
             nomeEntidade = "Medicamento";
@@ -38,9 +38,9 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloMedicamento
             Console.WriteLine();
 
             Console.WriteLine("[1] Inserir Medicamento");
-            Console.WriteLine("[2] Visualizar Medicamentos");
-            Console.WriteLine("[3] Editar Medicamentos");
-            Console.WriteLine("[4] Excluir Medicamentos");
+            Console.WriteLine("[2] Editar Medicamentos");
+            Console.WriteLine("[3] Excluir Medicamentos");
+            Console.WriteLine("[4] Visualizar Medicamentos");
             Console.WriteLine("[5] Visualizar Medicamentos Mais Retirados");
             Console.WriteLine("[6] Visualizar Medicamentos em Falta\n");
 
@@ -129,7 +129,7 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloMedicamento
             MostrarTabela(medicamentosMaisRetirados);
         }
 
-        public void VisulizarMedicamentosEmFalta()
+        public void VisualizarMedicamentosEmFalta()
         {
             Console.WriteLine("Cadastro de Medicamentos");
             Console.WriteLine();

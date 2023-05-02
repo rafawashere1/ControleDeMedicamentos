@@ -4,6 +4,12 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloEndereco
 {
     public class TelaEndereco : TelaBase<Endereco>
     {
+
+        public TelaEndereco(RepositorioEndereco repositorioEndereco) : base(repositorioEndereco)
+        {
+            
+        }
+
         protected override void MostrarTabela(List<Endereco> registros)
         {
             Console.WriteLine("{0, -10} | {1, -20} | {2, -20}", "Id", "Rua", "Numero da Casa");

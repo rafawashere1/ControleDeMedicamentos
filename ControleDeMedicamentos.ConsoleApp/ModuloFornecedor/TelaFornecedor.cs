@@ -7,9 +7,9 @@ namespace ControleDeMedicamentos.ConsoleApp.ModuloFornecedor
     {
         private readonly TelaEndereco _telaEndereco;
 
-        public TelaFornecedor(RepositorioFornecedor repositorioFornecedor, TelaEndereco telaEndereco)
+        public TelaFornecedor(RepositorioFornecedor repositorioFornecedor, TelaEndereco telaEndereco) : base(repositorioFornecedor)
         {
-            this.repositorioBase = repositorioFornecedor;
+            
             _telaEndereco = telaEndereco;
             nomeEntidade = "Fornecedor";
             sufixo = "es";
