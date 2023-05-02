@@ -1,7 +1,7 @@
 ﻿namespace ControleDeMedicamentos.ConsoleApp.Compartilhado
 {
-    internal class Repositorio
+    public enum TipoMensagem
     {
-
+        READKEY, NOREADKEY
     }
 }

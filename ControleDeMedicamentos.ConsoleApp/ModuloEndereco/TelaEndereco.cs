@@ -1,8 +1,22 @@
-﻿namespace ControleDeMedicamentos.ConsoleApp.ModuloEndereco
+﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
+
+namespace ControleDeMedicamentos.ConsoleApp.ModuloEndereco
 {
-    internal class TelaEndereco
+    public class TelaEndereco : TelaBase<Endereco>
     {
-        public Endereco ObterEndereco()
+        protected override void MostrarTabela(List<Endereco> registros)
+        {
+            Console.WriteLine("{0, -10} | {1, -20} | {2, -20}", "Id", "Rua", "Numero da Casa");
+
+            Console.WriteLine("--------------------------------------------------------------------");
+
+            foreach (Endereco endereco in registros)
+            {
+                Console.WriteLine("{0, -10} | {1, -20} | {2, -20}", endereco.Id, endereco.Rua, endereco.NumeroCasa);
+            }
+        }
+
+        protected override Endereco ObterRegistro()
         {
             Console.Write(">> Digite a rua: ");
             string rua = Console.ReadLine();
@@ -19,9 +33,7 @@
             Console.Write(">> Digite o país: ");
             string pais = Console.ReadLine();
 
-            Endereco endereco = new(rua, cidade, estado, pais, numeroCasa);
-
-            return endereco;
+            return new(rua, cidade, estado, pais, numeroCasa);
         }
     }
 }

@@ -1,50 +1,46 @@
 ﻿using ControleDeMedicamentos.ConsoleApp.Compartilhado;
-using ControleDeMedicamentos.ConsoleApp.ModuloFornecedor;
 
 namespace ControleDeMedicamentos.ConsoleApp.ModuloMedicamento
 {
-    internal class RepositorioMedicamento : Repositorio
+    public class RepositorioMedicamento : RepositorioBase<Medicamento>
     {
-        private List<Medicamento> listaMedicamentos = new();
-
-        private readonly RepositorioFornecedor _repositorioFornecedor;
-
-        public RepositorioMedicamento(RepositorioFornecedor repositorioFornecedor)
+        public List<Medicamento> SelecionarMedicamentosMaisRetirados()
         {
-            _repositorioFornecedor = repositorioFornecedor;
+            List<Medicamento> listaMedicamentos = SelecionarTodos();
+
+            Medicamento[] medicamentos = ConverterParaMedicamentos(listaMedicamentos);
+
+            Array.Sort(medicamentos, new ComparadorMedicamentosRetirados());
+
+            return medicamentos.ToList();
         }
 
-        internal void Inserir(Medicamento novoMedicamento)
+        private Medicamento[] ConverterParaMedicamentos(List<Medicamento> listaRegistros)
         {
-            listaMedicamentos.Add(novoMedicamento);
+            Medicamento[] medicamentos = new Medicamento[listaRegistros.Count];
+
+            int posicao = 0;
+            foreach (Medicamento m in listaRegistros)
+            {
+                medicamentos[posicao++] = m;
+            }
+
+            return medicamentos;
         }
 
-        internal void Editar(Medicamento medicamentoAntigo, Medicamento medicamentoNovo)
+        public List<Medicamento> SelecionarMedicamentosEmFalta()
         {
-            medicamentoAntigo.Nome = medicamentoNovo.Nome;
-            medicamentoAntigo.Descricao = medicamentoNovo.Descricao;
-            medicamentoAntigo.QuantidadeDisponivel = medicamentoNovo.QuantidadeDisponivel;
-            medicamentoAntigo.Fornecedor = medicamentoNovo.Fornecedor;
-        }
-        internal void Excluir(Medicamento medicamento)
-        {
-            listaMedicamentos.Remove(medicamento);
-        }
+            List<Medicamento> listaMedicamentosEmFalta = new();
 
-        public void PopularListaMedicamento()
-        {
-            List<Fornecedor> listaFornecedores = _repositorioFornecedor.SelecionarTodos();
+            List<Medicamento> listaMedicamentos = SelecionarTodos();
 
-            Fornecedor fornecedor =listaFornecedores.Find(x => x.Id == 1);
+            foreach (Medicamento m in listaMedicamentos)
+            {
+                if (m.Quantidade == 0)
+                    listaMedicamentosEmFalta.Add(m);
+            }
 
-            Medicamento medicamento = new("Paracetamol", "Dor de Cabeça", 10, fornecedor);
-
-            Inserir(medicamento);
-        }
-
-        public List<Medicamento> SelecionarTodos()
-        {
-            return listaMedicamentos;
+            return listaMedicamentosEmFalta;
         }
     }
 }
